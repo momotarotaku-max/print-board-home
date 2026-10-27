@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プリントボード</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="プリントボード">
+<meta name="theme-color" content="#8b1e2f">
+<script>
+  // ホーム画面のアイコンから開いたとき（URLに ?go が付いている）は、すぐ本体へ移る
+  var APP = "https://script.google.com/macros/s/AKfycbzAeR6jP3ZNjyLqV1yjUAh_neEYqxon8bB47PwzDMJ9u83TuR9f12U2ssjI9hE2GijP/exec";
+  if (/[?&]go\b/.test(location.search)) location.replace(APP);
+</script>
+<style>
+  :root{--bg:#fff;--ink:#1f1e1c;--sub:#6b6965;--line:#e4e2dd;--tile:#f5f5f3;--accent:#8b1e2f}
+  @media (prefers-color-scheme:dark){:root{--bg:#1a1a19;--ink:#efede8;--sub:#b3b0aa;--line:#363532;--tile:#2b2b29;--accent:#c2475a}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+  main{max-width:440px;margin:0 auto;padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+  img{width:96px;height:96px;border-radius:22px}
+  h1{font-size:20px;font-weight:500;margin:0}
+  a.open{display:block;width:100%;padding:12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:500}
+  ol{text-align:left;background:var(--tile);border-radius:8px;padding:14px 14px 14px 34px;margin:0;width:100%;font-size:14px}
+  p{margin:0;color:var(--sub);font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <img src="apple-touch-icon.png" alt="">
+  <h1>プリントボード</h1>
+  <a class="open" id="open" href="#">プリントボードを開く</a>
+  <ol>
+    <li>Safari 下の共有ボタン（□↑）を押す</li>
+    <li>「ホーム画面に追加」を選ぶ</li>
+    <li>「Webアプリとして開く」はオフにして「追加」</li>
+  </ol>
+  <p>ホーム画面のアイコンから開くと、そのままプリントボードが表示されます。</p>
+</main>
+<script>
+  document.getElementById("open").href = APP;
+  // この状態で「ホーム画面に追加」すると、?go 付きのURLが登録される
+  if (!/[?&]go\b/.test(location.search)) history.replaceState(null, "", location.pathname + "?go");
+</script>
+</body>
+</html>

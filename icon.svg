@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#8b1e2f"/>
+  <g transform="translate(90 76) scale(4.7) translate(-12 -12)" stroke="#ffffff" stroke-width="0.9" stroke-linejoin="round" fill="#ffffff">
+    <path d="M9 3l-5 2.5 1.5 4L8 8.8V21h8V8.8l2.5.7 1.5-4L15 3c-.5 1.4-1.6 2.2-3 2.2S9.5 4.4 9 3z"/>
+  </g>
+  <text x="90" y="101" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="38" fill="#8b1e2f">P</text>
+  <text x="90" y="156" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="26" letter-spacing="4" fill="#ffffff">OTC</text>
+</svg>
