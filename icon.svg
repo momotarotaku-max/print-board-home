@@ -1,8 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
-  <rect width="180" height="180" fill="#8b1e2f"/>
-  <g transform="translate(90 76) scale(4.7) translate(-12 -12)" stroke="#ffffff" stroke-width="0.9" stroke-linejoin="round" fill="#ffffff">
-    <path d="M9 3l-5 2.5 1.5 4L8 8.8V21h8V8.8l2.5.7 1.5-4L15 3c-.5 1.4-1.6 2.2-3 2.2S9.5 4.4 9 3z"/>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0" stop-color="#e3a3ad"/>
+      <stop offset="1" stop-color="#c47483"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b1"/>
+      <feFlood flood-color="#8e1a36"/>
+      <feComposite in2="b1" operator="in" result="g1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3.5" result="b2"/>
+      <feFlood flood-color="#a3233f"/>
+      <feComposite in2="b2" operator="in" result="g2"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1.4" result="d"/>
+      <feFlood flood-color="#b8324f"/>
+      <feComposite in2="d" operator="in" result="rim"/>
+      <feMerge><feMergeNode in="g1"/><feMergeNode in="g1"/><feMergeNode in="g2"/><feMergeNode in="g2"/><feMergeNode in="rim"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="180" height="180" fill="url(#bg)"/>
+  <g filter="url(#glow)">
+    <g transform="translate(90 76) scale(4.7) translate(-12 -12)" stroke="#ffffff" stroke-width="0.7" stroke-linejoin="round" fill="#ffffff">
+      <path d="M9 3l-5 2.5 1.5 4L8 8.8V21h8V8.8l2.5.7 1.5-4L15 3c-.5 1.4-1.6 2.2-3 2.2S9.5 4.4 9 3z"/>
+    </g>
+    <text x="90" y="156" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="26" letter-spacing="4" fill="#ffffff">OTC</text>
   </g>
-  <text x="90" y="101" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="38" fill="#8b1e2f">P</text>
-  <text x="90" y="156" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="26" letter-spacing="4" fill="#ffffff">OTC</text>
+  <text x="90" y="101" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="38" fill="#9b2140">P</text>
 </svg>
