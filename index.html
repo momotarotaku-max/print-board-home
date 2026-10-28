@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>プリントボード</title>
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180-v3.png">
-<link rel="icon" type="image/png" sizes="180x180" href="icon-180-v3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180-v4.png">
+<link rel="icon" type="image/png" sizes="180x180" href="icon-180-v4.png">
 <meta name="apple-mobile-web-app-title" content="プリントボード">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#c47483">
 <style>
   :root{--bg:#fff;--ink:#1f1e1c;--sub:#6b6965;--line:#e4e2dd;--tile:#f5f5f3;--accent:#a8475a}
@@ -24,32 +25,25 @@
 </head>
 <body>
 <main>
-  <img src="icon-180-v3.png" alt="">
+  <img src="icon-180-v4.png" alt="">
   <h1>プリントボード</h1>
   <a class="open" id="open" href="#">プリントボードを開く</a>
   <ol>
-    <li>Safari 下の共有ボタン（□↑）を押す</li>
-    <li>「ホーム画面に追加」を選ぶ</li>
-    <li>「Webアプリとして開く」はオフにして「追加」</li>
+    <li>Safari の共有ボタン（□↑）を押す</li>
+    <li>iPhone は「ホーム画面に追加」、Mac は「Dock に追加」を選ぶ</li>
+    <li>iPhone は「Webアプリとして開く」をオンのまま「追加」</li>
   </ol>
-  <p class="hint">ホーム画面のアイコンから開くと、そのままプリントボードが表示されます。</p>
+  <p class="hint">追加したアイコンから開くと、そのままプリントボードが表示されます。最初の1回だけ Google へのログインが必要です。</p>
 </main>
 <script>
   var APP = "https://script.google.com/macros/s/AKfycbzAeR6jP3ZNjyLqV1yjUAh_neEYqxon8bB47PwzDMJ9u83TuR9f12U2ssjI9hE2GijP/exec";
   document.getElementById("open").href = APP;
-  if (/[?&]go\b/.test(location.search)) {
-    // ホーム画面のアイコンから開いたときだけ本体へ移る。
-    // iPhone がアイコンを読みに裏で開いたとき（画面に出ていない）は移らないよう、表示中か確かめて少し待つ
+  // ホーム画面や Dock から「アプリとして」起動したときだけ本体へ移る。
+  // 追加のときに Safari がアイコンを読みに来る読み込みはアプリ扱いにならないので、ここでは移らずアイコンを読める
+  var asApp = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
+  if (asApp) {
     document.body.className = "going";
-    var go = function () {
-      if (document.visibilityState !== "visible") return;
-      setTimeout(function () { if (document.visibilityState === "visible") location.replace(APP); }, 400);
-    };
-    if (document.readyState === "complete") go(); else addEventListener("load", go);
-    document.addEventListener("visibilitychange", go);
-  } else {
-    // この状態で「ホーム画面に追加」すると、?go 付きのURLが登録される
-    history.replaceState(null, "", location.pathname + "?go");
+    location.replace(APP);
   }
 </script>
 </body>
